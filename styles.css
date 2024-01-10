@@ -270,6 +270,29 @@ input[type=submit]:hover {
     font-family: Calibri;
 }
 
+.more-about-text{
+  display: flex;
+  max-width: 70%;
+  color: white;
+  font-family: Calibri;
+  justify-content: space-between;
+  margin: auto;
+  text-align: center;
+}
+
+#more-about-title{
+  text-align: center;
+  margin-top: 100px;
+  color: white;
+  font-family: Calibri;
+  font-weight: 600;
+  font-size: 80px;
+}
+
+.src-cd{
+  margin-right: 100px;
+}
+
 #about-body{
     background-color: #363636;
 }
