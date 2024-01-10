@@ -258,6 +258,18 @@ input[type=submit]:hover {
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
+    background-color: #141414;
+}
+
+#about-2{
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  background-color: #363636;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .about-model{
@@ -294,7 +306,7 @@ input[type=submit]:hover {
 }
 
 #about-body{
-    background-color: #363636;
+  background-color: #141414;
 }
 
 #about-title{
