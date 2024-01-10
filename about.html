@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Personalized Task Manager</title>
+    
+    <script>
+        // This function is to load prefered theme color
+        function onloadproc(){
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const theme = urlParams.get('theme');
+            
+            if(theme == "blue"){
+                blue();
+            }
+            else if(theme == "black"){
+                black()
+            }
+            else if(theme == "red"){
+                red()
+            }
+            else if(theme == "pink"){
+                pink()
+            }
+        }
+
+        // This function is to go back to My task page
+        function go_mt(){
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const theme = urlParams.get('theme');
+            
+            if(theme == "blue"){
+                window.location.href = "http://localhost:8080/taskmanager/index.html?theme=blue";
+            }
+            else if(theme == "black"){
+                window.location.href = "http://localhost:8080/taskmanager/index.html?theme=black";
+            }
+            else if(theme == "red"){
+                window.location.href = "http://localhost:8080/taskmanager/index.html?theme=red";
+            }
+            else if(theme == "pink"){
+                window.location.href = "http://localhost:8080/taskmanager/index.html?theme=pink";
+            }
+            else{
+                window.location.href = "http://localhost:8080/taskmanager/index.html";
+            }
+        }
+
+        // This function is to change the them color to black
+        function black(){
+            document.getElementById("myHeader").style.backgroundColor = "#000";
+            document.getElementById("myFooter").style.backgroundColor = "#000";
+            document.getElementById("myHeader").style.color = "white";
+            document.getElementById("myFooter").style.color = "white";
+
+            var css = '#btn-mt:hover, #btn-mt:active {background-color: rgb(122, 122, 122);color: white;} #btn-mt {background-color: white;color: #000;}';
+            var style = document.createElement('style');
+
+            if (style.styleSheet) {
+                style.styleSheet.cssText = css;
+            } else {
+                style.appendChild(document.createTextNode(css));
+            }
+
+            document.getElementsByTagName('header')[0].appendChild(style);
+
+            history.pushState({}, null, "http://localhost:8080/taskmanager/index.html?theme=black");
+        }
+
+        // This function is to change the them color to blue
+        function blue(){
+            document.getElementById("myHeader").style.backgroundColor = "rgb(0, 153, 255)";
+            document.getElementById("myFooter").style.backgroundColor = "rgb(0, 153, 255)";
+            document.getElementById("myHeader").style.color = "white";
+            document.getElementById("myFooter").style.color = "white";
+
+            var css = '#btn-mt:hover, #btn-mt:active {background-color: rgb(0, 153, 255);color: white;} #btn-mt {background-color: white;color: rgb(0, 153, 255);}';
+            var style = document.createElement('style');
+
+            if (style.styleSheet) {
+                style.styleSheet.cssText = css;
+            } else {
+                style.appendChild(document.createTextNode(css));
+            }
+
+            document.getElementsByTagName('header')[0].appendChild(style);
+
+            history.pushState({}, null, "http://localhost:8080/taskmanager/index.html?theme=blue");
+        }
+
+        // This function is to change the them color to red
+        function red(){
+            document.getElementById("myHeader").style.backgroundColor = "#f00";
+            document.getElementById("myFooter").style.backgroundColor = "#f00";
+            document.getElementById("myHeader").style.color = "white";
+            document.getElementById("myFooter").style.color = "white";
+
+            var css = '#btn-mt:hover, #btn-mt:active {background-color: rgb(250, 115, 115);color: white;} #btn-mt {background-color: white;color: #f00;}';
+            var style = document.createElement('style');
+
+            if (style.styleSheet) {
+                style.styleSheet.cssText = css;
+            } else {
+                style.appendChild(document.createTextNode(css));
+            }
+
+            document.getElementsByTagName('header')[0].appendChild(style);
+
+            history.pushState({}, null, "http://localhost:8080/taskmanager/index.html?theme=red");
+        }
+
+        // This function is to change the them color to pink
+        function pink(){
+            document.getElementById("myHeader").style.backgroundColor = "#f59ace";
+            document.getElementById("myFooter").style.backgroundColor = "#f59ace";
+            document.getElementById("myHeader").style.color = "#000";
+            document.getElementById("myFooter").style.color = "#000";
+
+            var css = '#btn-mt:hover, #btn-mt:active {background-color: #f59ace;color: white;} #btn-mt {background-color: #000; color: #f59ace;}';
+            var style = document.createElement('style');
+
+            if (style.styleSheet) {
+                style.styleSheet.cssText = css;
+            } else {
+                style.appendChild(document.createTextNode(css));
+            }
+
+            document.getElementsByTagName('header')[0].appendChild(style);
+
+            history.pushState({}, null, "http://localhost:8080/taskmanager/index.html?theme=pink");
+        }
+
+        //This function is to display the the color choices
+        function personalizeButton(){
+
+            const display = document.getElementById("color-list").style.display;
+
+            if(display == "block"){
+                document.getElementById("color-list").style.display = "none";
+            }
+            else{
+                document.getElementById("color-list").style.display = "block";
+            }
+
+        }
+
+    </script>
+</head>
+<body id="about-body" onload="onloadproc()">
+    <header id="myHeader">
+        <div id="titleheader"><h1 id="app-title" >About Us</h1></div>
+        <button id="btn-mt" onclick="go_mt()">My task</button>
+        <button id="personalize" onClick="personalizeButton()"><box-icon name='edit-alt'></box-icon></button>
+    </header>
+    <div id="color-list">
+        <div onclick="black()" class="colorBlock" id="Black"></div>
+        <div onclick="blue()" class="colorBlock" id="Blue"></div>
+        <div onclick="red()" class="colorBlock" id="Red"></div>
+        <div onclick="pink()" class="colorBlock" id="Pink"></div>
+    </div>
+
+    <main>
+        <div class="about-container">
+            <h1 id="about-title">Developers</h1>
+            <section id="about">
+                <div class="about-text">
+                    <!-- Developer 1 -->
+                    <h2>CHE WAN HARITH IRFAN BIN CHE WAN MOHD SUFIAN</h2>
+                    <h1>Student ID: 2023149835</h1>
+                    <ul>
+                        <li> Role: Senior Front-End Developer</li>
+                        <li> Responsibilities:  Leading the front-end development team, ensuring the seamless integration of user interface components, and collaborating with UX/UI designers to implement responsive and visually appealing designs.</li>
+                    </ul>
+                </div>
+                <!-- Developer 1-about-model-img -->
+                <div class="about-model">
+                    <img width="250px" src="images/chewan.png" alt="Me">
+                </div>
+            </section>
+
+            <section id="about">
+                <!-- Developer 2-about-model-img -->
+                <div class="about-model">
+                    <img width="250px" src="images/haizad.png" alt="Me">
+                </div>
+                <div class="about-text">
+                    <!-- Developer 2-->
+                    <h2>MOHAMMAD HAIZAD BIN HAMSI</h2>
+                    <h1>Student ID: 2023168593</h1>
+                    <ul>
+                        <li> Role: Front-End Engineer</li>
+                        <li> Responsibilities:  Writing clean and efficient code, optimizing applications for maximum speed and scalability, and collaborating with back-end developers to integrate user-facing elements with server-side logic.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="about">
+                <div class="about-text">
+                    <!-- Developer 3 -->
+                    <h2>AMIRUL HAFIDZ BIN NOOR AZMIR</h2>
+                    <h1>Student ID: 2023393015</h1>
+                    <ul>
+                        <li> Role: UI/UX Developer</li>
+                        <li> Responsibilities:  Creating visually appealing and intuitive user interfaces, conducting user research to inform design decisions, and collaborating closely with both front-end and back-end developers to ensure a seamless user experience.</li>
+                    </ul>
+                </div>
+                <!-- Developer 3-about-model-img -->
+                <div class="about-model">
+                    <img width="250px" src="images/amirul.png" alt="Me">
+                </div>
+            </section>
+
+            <section id="about">
+                <!-- Developer 4-about-model-img -->
+                <div class="about-model">
+                    <img width="250px" src="images/syahmi.png" alt="Me">
+                </div>
+                <div class="about-text">
+                    <!-- Developer 4 -->
+                    <h2>MUHAMMAD SYAHMI BIN MUSTAFFA</h2>
+                    <h1>Student ID: 2023189327</h1>
+                    <ul>
+                        <li> Role: Front-End Architect</li>
+                        <li> Responsibilities:  Designing and implementing the overall architecture of the front-end applications, providing technical leadership, and staying updated on emerging technologies to drive innovation within the development team.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer id="myFooter">
+        <p>&copy; 2024 Enigma. All right reserved. | My Task Manager</p>
+    </footer>
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
