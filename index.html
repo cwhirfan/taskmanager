@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <title>My Task Manager</title>
-   
+    <script src="script.js"></script>
     <script>
         //This function is to check all the checkboxes when clicks at the "Select All" checkbox
         function selectAllCheckboxes() {
@@ -16,6 +16,39 @@
             checkboxes.forEach(function (checkbox) {
                 checkbox.checked = selectAllCheckbox.checked;
             });
+        }
+
+        function filterTasks() {
+
+            // Get selected filter values
+            const priorityFilters = document.querySelectorAll('#priority-check input[type="checkbox"]:checked');
+            const statusFilters = document.querySelectorAll('#status-check input[type="checkbox"]:checked');
+
+            // Filter tasks based on selected criteria
+            const rows = document.querySelectorAll('#tasks tr:not(#notask)');
+
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                const priority = row.querySelector('td:nth-child(4)').innerHTML;
+                const status = row.querySelector('td:nth-child(5)').innerHTML;
+
+                // Check if the row should be displayed based on priority filters
+                const priorityFilterPassed = Array.from(priorityFilters).some(filter => {
+                    return filter.value === priority.toLowerCase();
+                });
+
+                // Check if the row should be displayed based on status filters
+                const statusFilterPassed = Array.from(statusFilters).some(filter => {
+                    return filter.value === status.toLowerCase();
+                });
+
+                // Display or hide the row based on filter criteria
+                if (priorityFilterPassed && statusFilterPassed) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
         }
 
         //This function is to display the filter options
@@ -473,42 +506,6 @@
     <footer id="myFooter">
         <p>&copy; 2024 Enigma. All right reserved. | My Task Manager</p>
     </footer>
-    <script src="script.js"></script>
-    <script>
-        function filterTasks() {
-
-            // Get selected filter values
-            const priorityFilters = document.querySelectorAll('#priority-check input[type="checkbox"]:checked');
-            const statusFilters = document.querySelectorAll('#status-check input[type="checkbox"]:checked');
-
-            // Filter tasks based on selected criteria
-            const rows = document.querySelectorAll('#tasks tr:not(#notask)');
-
-            for (let i = 1; i < rows.length; i++) {
-                const row = rows[i];
-                const priority = row.querySelector('td:nth-child(4)').innerHTML;
-                const status = row.querySelector('td:nth-child(5)').innerHTML;
-
-                // Check if the row should be displayed based on priority filters
-                const priorityFilterPassed = Array.from(priorityFilters).some(filter => {
-                    return filter.value === priority.toLowerCase();
-                });
-
-                // Check if the row should be displayed based on status filters
-                const statusFilterPassed = Array.from(statusFilters).some(filter => {
-                    return filter.value === status.toLowerCase();
-                });
-
-                // Display or hide the row based on filter criteria
-                if (priorityFilterPassed && statusFilterPassed) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            }
-        }
-    </script>
-    
 </body>
 </html>
 
