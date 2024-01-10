@@ -35,19 +35,19 @@
             const theme = urlParams.get('theme');
             
             if(theme == "blue"){
-                window.location.href = "http://localhost:8080/taskmanager/index.html?theme=blue";
+                window.location.href = "index.html?theme=blue";
             }
             else if(theme == "black"){
-                window.location.href = "http://localhost:8080/taskmanager/index.html?theme=black";
+                window.location.href = "index.html?theme=black";
             }
             else if(theme == "red"){
-                window.location.href = "http://localhost:8080/taskmanager/index.html?theme=red";
+                window.location.href = "index.html?theme=red";
             }
             else if(theme == "pink"){
-                window.location.href = "http://localhost:8080/taskmanager/index.html?theme=pink";
+                window.location.href = "index.html?theme=pink";
             }
             else{
-                window.location.href = "http://localhost:8080/taskmanager/index.html";
+                window.location.href = "index.html";
             }
         }
 
@@ -69,7 +69,7 @@
 
             document.getElementsByTagName('header')[0].appendChild(style);
 
-            history.pushState({}, null, "http://localhost:8080/taskmanager/index.html?theme=black");
+            history.pushState({}, null, "index.html?theme=black");
         }
 
         // This function is to change the them color to blue
@@ -90,7 +90,7 @@
 
             document.getElementsByTagName('header')[0].appendChild(style);
 
-            history.pushState({}, null, "http://localhost:8080/taskmanager/index.html?theme=blue");
+            history.pushState({}, null, "index.html?theme=blue");
         }
 
         // This function is to change the them color to red
@@ -111,7 +111,7 @@
 
             document.getElementsByTagName('header')[0].appendChild(style);
 
-            history.pushState({}, null, "http://localhost:8080/taskmanager/index.html?theme=red");
+            history.pushState({}, null, "index.html?theme=red");
         }
 
         // This function is to change the them color to pink
@@ -132,7 +132,7 @@
 
             document.getElementsByTagName('header')[0].appendChild(style);
 
-            history.pushState({}, null, "http://localhost:8080/taskmanager/index.html?theme=pink");
+            history.pushState({}, null, "index.html?theme=pink");
         }
 
         //This function is to display the the color choices
