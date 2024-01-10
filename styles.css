@@ -359,6 +359,68 @@ input[type="checkbox"] {
   margin-bottom: 20px;
 }
 
-/* .filters:not(.filters--active) {
-  display: none;
-} */
+@media(max-width: 1700px){
+  #task-form{
+    width: 400px;
+    height: 450px;
+    margin-top: 15px;
+  }
+
+  #add-task-form{
+    height: 10px;
+  }
+
+  label{
+    font-size: small;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
+
+  #task-container{
+    margin-top: 30px;
+  }
+
+  
+}
+
+@media(max-width: 1400px){
+  #task-form{
+    width: 200px;
+    height: 450px;
+    margin-top: 15px;
+  }
+
+  main{
+    flex-direction: column;
+  }
+
+  #add-task-form{
+    height: 10px;
+  }
+
+  label{
+    font-size: small;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
+
+  #task-container{
+    margin-top: 30px;
+  }
+}
