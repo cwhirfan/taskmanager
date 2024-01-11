@@ -46,127 +46,19 @@
     });
 });
 
-//This function is to check all the checkboxes when clicks at the "Select All" checkbox
-function selectAllCheckboxes() {
-    var checkboxes = document.querySelectorAll('.filters__list input[type="checkbox"]');
-    var selectAllCheckbox = document.getElementById('selectAllCheckbox'); // Add an id to your "Select All" checkbox
+//This function is to display the the color choices
+function personalizeButton(){
 
-    checkboxes.forEach(function (checkbox) {
-        checkbox.checked = selectAllCheckbox.checked;
-    });
-}
-
-function filterTasks() {
-
-    // Get selected filter values
-    const priorityFilters = document.querySelectorAll('#priority-check input[type="checkbox"]:checked');
-    const statusFilters = document.querySelectorAll('#status-check input[type="checkbox"]:checked');
-
-    // Filter tasks based on selected criteria
-    const rows = document.querySelectorAll('#tasks tr:not(#notask)');
-
-    for (let i = 1; i < rows.length; i++) {
-        const row = rows[i];
-        const priority = row.querySelector('td:nth-child(4)').innerHTML;
-        const status = row.querySelector('td:nth-child(5)').innerHTML;
-
-        // Check if the row should be displayed based on priority filters
-        const priorityFilterPassed = Array.from(priorityFilters).some(filter => {
-            return filter.value === priority.toLowerCase();
-        });
-
-        // Check if the row should be displayed based on status filters
-        const statusFilterPassed = Array.from(statusFilters).some(filter => {
-            return filter.value === status.toLowerCase();
-        });
-
-        // Display or hide the row based on filter criteria
-        if (priorityFilterPassed && statusFilterPassed) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    }
-}
-
-//This function is to display the filter options
-function showFilter(){
-
-    const display = document.getElementById("filter-container").style.display;
+    const display = document.getElementById("color-list").style.display;
 
     if(display == "block"){
-        document.getElementById("filter-container").style.display = "none";
-    }
-    else{
-        document.getElementById("filter-container").style.display = "block";
         document.getElementById("color-list").style.display = "none";
     }
-}
-
-// This function is to load prefered theme color
-function onloadproc(){
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const theme = urlParams.get('theme');
-    
-    if(theme == "blue"){
-        blue();
-    }
-    else if(theme == "black"){
-        black()
-    }
-    else if(theme == "red"){
-        red()
-    }
-    else if(theme == "pink"){
-        pink()
-    }
-}
-
-//This function is to go to the About Us page.
-function go_about(){
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const theme = urlParams.get('theme');
-    
-    if(theme == "blue"){
-        window.location.href = "about.html?theme=blue";
-    }
-    else if(theme == "black"){
-        window.location.href = "about.html?theme=black";
-    }
-    else if(theme == "red"){
-        window.location.href = "about.html?theme=red";
-    }
-    else if(theme == "pink"){
-        window.location.href = "about.html?theme=pink";
-    }
     else{
-        window.location.href = "about.html";
+        document.getElementById("color-list").style.display = "block";
+        document.getElementById("filter-container").style.display = "none";
     }
-}
 
-// This function is to go back to My task page
-function go_mt(){
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const theme = urlParams.get('theme');
-    
-    if(theme == "blue"){
-        window.location.href = "index.html?theme=blue";
-    }
-    else if(theme == "black"){
-        window.location.href = "index.html?theme=black";
-    }
-    else if(theme == "red"){
-        window.location.href = "index.html?theme=red";
-    }
-    else if(theme == "pink"){
-        window.location.href = "index.html?theme=pink";
-    }
-    else{
-        window.location.href = "index.html";
-    }
 }
 
 // This function is to change the them color to black
@@ -253,19 +145,70 @@ function pink(){
     history.pushState({}, null, "?theme=pink");
 }
 
-//This function is to display the the color choices
-function personalizeButton(){
+// This function is to load prefered theme color
+function onloadproc(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const theme = urlParams.get('theme');
+    
+    if(theme == "blue"){
+        blue();
+    }
+    else if(theme == "black"){
+        black()
+    }
+    else if(theme == "red"){
+        red()
+    }
+    else if(theme == "pink"){
+        pink()
+    }
+}
 
-    const display = document.getElementById("color-list").style.display;
-
-    if(display == "block"){
-        document.getElementById("color-list").style.display = "none";
+//This function is to go to the About Us page.
+function go_about(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const theme = urlParams.get('theme');
+    
+    if(theme == "blue"){
+        window.location.href = "about.html?theme=blue";
+    }
+    else if(theme == "black"){
+        window.location.href = "about.html?theme=black";
+    }
+    else if(theme == "red"){
+        window.location.href = "about.html?theme=red";
+    }
+    else if(theme == "pink"){
+        window.location.href = "about.html?theme=pink";
     }
     else{
-        document.getElementById("color-list").style.display = "block";
-        document.getElementById("filter-container").style.display = "none";
+        window.location.href = "about.html";
     }
+}
 
+// This function is to go back to My task page
+function go_mt(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const theme = urlParams.get('theme');
+    
+    if(theme == "blue"){
+        window.location.href = "index.html?theme=blue";
+    }
+    else if(theme == "black"){
+        window.location.href = "index.html?theme=black";
+    }
+    else if(theme == "red"){
+        window.location.href = "index.html?theme=red";
+    }
+    else if(theme == "pink"){
+        window.location.href = "index.html?theme=pink";
+    }
+    else{
+        window.location.href = "index.html";
+    }
 }
 
 //This function is the process of clicking the edit button before the task completed
@@ -447,5 +390,62 @@ function complete(counter,title,description,dueDate,priority){
 
     } else {
         
+    }
+}
+
+    //This function is to display the filter options
+function showFilter(){
+
+    const display = document.getElementById("filter-container").style.display;
+
+    if(display == "block"){
+        document.getElementById("filter-container").style.display = "none";
+    }
+    else{
+        document.getElementById("filter-container").style.display = "block";
+        document.getElementById("color-list").style.display = "none";
+    }
+}
+
+//This function is to check all the checkboxes when clicks at the "Select All" checkbox
+function selectAllCheckboxes() {
+    var checkboxes = document.querySelectorAll('.filters__list input[type="checkbox"]');
+    var selectAllCheckbox = document.getElementById('selectAllCheckbox'); // Add an id to your "Select All" checkbox
+
+    checkboxes.forEach(function (checkbox) {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
+}
+
+function filterTasks() {
+
+    // Get selected filter values
+    const priorityFilters = document.querySelectorAll('#priority-check input[type="checkbox"]:checked');
+    const statusFilters = document.querySelectorAll('#status-check input[type="checkbox"]:checked');
+
+    // Filter tasks based on selected criteria
+    const rows = document.querySelectorAll('#tasks tr:not(#notask)');
+
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const priority = row.querySelector('td:nth-child(4)').innerHTML;
+        const status = row.querySelector('td:nth-child(5)').innerHTML;
+
+        // Check if the row should be displayed based on priority filters
+        const priorityFilterPassed = Array.from(priorityFilters).some(filter => {
+            return filter.value === priority.toLowerCase();
+        });
+
+        // Check if the row should be displayed based on status filters
+        const statusFilterPassed = Array.from(statusFilters).some(filter => {
+            return filter.value === status.toLowerCase();
+        });
+
+        // Display or hide the row based on filter criteria
+        if (priorityFilterPassed && statusFilterPassed) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
     }
 }
