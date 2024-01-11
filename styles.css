@@ -1,39 +1,38 @@
+button{
+  cursor: pointer;
+}
+
 header{
   flex-shrink: 0;
+  z-index: 9999;
 }
 
 footer{
   flex-shrink: 0;
+  z-index: 9999;
 }
 
 .statusColumn{
   display: none;
 }
 
-#task-form {
-    margin: 0;
-    margin-left: 50px;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    border-radius: 5px;
-    background-color: #b6b4b4;
-    padding: 20px;
-    width: 500px;
-    align-items: center;
+main{
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  height: 145vh;
 }
 
+#task-form {
+    border-radius: 5px;
+    background-color: #b6b4b4;
+    padding: 2em;
+    margin-top: 7em;
+}
+
+
 #task-container{
-    margin-left: 35%;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    align-items: center;
-    width: fit-content;
-    height: 550px; /* Adjust the height according to your needs */
-    
+    margin-top: 5em;
 }
 
 #task-list{
@@ -41,11 +40,7 @@ footer{
     width: 100%;
     height: 450px; /* Adjust the height according to your needs */
     overflow-y: auto; /* Add a scrollbar if the content exceeds the container height */
-}
-
-main{
-    display: flex;
-    flex-wrap: nowrap;
+    padding-left: 2em;
 }
 
 
@@ -61,15 +56,19 @@ th {
   position: sticky;
   top: 0;
   z-index: 1;
+  width: auto;
 }
 
 td{
     text-align: center;
+    width: auto;
 }
 
 #table-header{
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    padding-left: 2em;
 }
 
 #myHeader {
@@ -77,7 +76,7 @@ td{
     left: 0;
     top: 0;
     width: 100%;
-    background-color: rgb(0, 153, 255);
+    background-color: #000;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -88,7 +87,6 @@ td{
 }
 
 #filter-button{
-    margin-right: 60px;
     height: fit-content;
     cursor: pointer;
 }
@@ -103,17 +101,18 @@ td{
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgb(0, 153, 255);
+    background-color: #000;
     color: white;
     text-align: center;
   }
 
   body {
     font-family: Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
-    flex-grow: 1;
     overflow: auto;
     min-height: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
 input, select, textarea {
@@ -204,7 +203,7 @@ input[type=submit]:hover {
   }
 
   #color-list{
-    position: absolute;
+    position: fixed;
     right: 0;
     margin-top: 70px;
     z-index: 9999;
@@ -215,7 +214,7 @@ input[type=submit]:hover {
   #btn-about:active,
   #btn-mt:hover, 
   #btn-mt:active {
-    background-color: rgb(0, 153, 255);
+    background-color: rgb(122, 122, 122);
     color: white;
   }
 
@@ -226,7 +225,7 @@ input[type=submit]:hover {
     margin: auto;
     font-weight: bold;
     background-color: white;
-    color: rgb(0, 153, 255);
+    color: #000;
     border: 2px solid white;
     padding: 10px 20px;
     border-radius: 10px;
@@ -236,16 +235,6 @@ input[type=submit]:hover {
     cursor: pointer;
   }
 
-  #audio{
-    width: 100%;
-    height: 100vh;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 50px 5% 0px 5%;
-}
-
 .about-container{
     width: 100%;
     height: 100%;
@@ -254,7 +243,6 @@ input[type=submit]:hover {
 }
 
 #about{
-    margin-top: 50px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
@@ -287,14 +275,13 @@ input[type=submit]:hover {
   max-width: 70%;
   color: white;
   font-family: Calibri;
-  justify-content: space-between;
   margin: auto;
   text-align: center;
+  padding-bottom: 5em;
 }
 
 #more-about-title{
   text-align: center;
-  margin-top: 100px;
   color: white;
   font-family: Calibri;
   font-weight: 600;
@@ -336,9 +323,12 @@ li {
   padding: 0.5em;
 }
 
-#filter-button{
-  margin-right: 200px;
+#filter-div{
   height: fit-content;
+  margin-right: 15em;
+}
+
+#filter-button{
   cursor: pointer;
 }
 
@@ -348,7 +338,7 @@ li {
   min-width: 200px;
   overflow: auto;
   border: 1px solid #ddd;
-  z-index: 9999;
+  z-index: 9000;
   text-align: left;
   display: none;
 }
@@ -375,6 +365,7 @@ input[type="checkbox"] {
   vertical-align: middle;
   position: relative;
   top: -1px;
+  cursor: pointer;
 }
 
 #filterType{
@@ -392,70 +383,4 @@ input[type="checkbox"] {
   margin-left: 130px;
   margin-top: 20px;
   margin-bottom: 20px;
-}
-
-@media(max-width: 1700px){
-  #task-form{
-    width: 400px;
-    height: 450px;
-    margin-top: 15px;
-  }
-
-  #add-task-form{
-    height: 10px;
-  }
-
-  label{
-    font-size: small;
-  }
-
-  input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-  }
-
-  #task-container{
-    margin-top: 30px;
-  }
-
-  
-}
-
-@media(max-width: 1400px){
-  #task-form{
-    width: 200px;
-    height: 450px;
-    margin-top: 15px;
-  }
-
-  main{
-    flex-direction: column;
-  }
-
-  #add-task-form{
-    height: 10px;
-  }
-
-  label{
-    font-size: small;
-  }
-
-  input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-  }
-
-  #task-container{
-    margin-top: 30px;
-  }
 }
