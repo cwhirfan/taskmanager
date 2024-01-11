@@ -1,7 +1,7 @@
  document.addEventListener('DOMContentLoaded', function () {
-    
     const addTaskForm = document.getElementById('add-task-form');
     const taskList = document.getElementById('tasks');
+    document.getElementById("due-date").valueAsDate = new Date();
 
     addTaskForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -36,6 +36,8 @@
             addTaskForm.reset();
 
             document.getElementById('counter').value++;
+
+            alert("Task added successfully");
             
         } else {
             alert('Please fill in all the required fields.');
