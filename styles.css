@@ -268,6 +268,7 @@ input[type=submit]:hover {
     max-width: 70%;
     color: white;
     font-family: Calibri;
+    margin: 2em;
 }
 
 .more-about-text{
