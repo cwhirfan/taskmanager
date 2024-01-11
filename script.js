@@ -297,11 +297,11 @@ function edit(counter){
     +
     `
         <td id="status${counter}" class="statusColumn">0</td>
-        <td id="mark${counter}" ><box-icon name='x-circle'></box-icon></td>
+        <td title="Not Completed" id="mark${counter}" ><box-icon name='x-circle'></box-icon></td>
         
         <td>
-            <button id="save-button" onClick="save(${counter})">Save</button>
-            <button id="cancel-button" onClick="cancelEdit('${counter}','${title}','${description}','${dueDate}','${priority}')">Cancel</button>
+            <button title="Save Edit" id="save-button" onClick="save(${counter})">Save</button>
+            <button title="Cancel Edit" id="cancel-button" onClick="cancelEdit('${counter}','${title}','${description}','${dueDate}','${priority}')">Cancel</button>
         </td>
         </form>
     `;
@@ -336,10 +336,10 @@ function edit2(counter){
     +
     `
         <td id="status${counter}" class="statusColumn">1</td>
-        <td id="mark${counter}" ><box-icon name='check-circle'></box-icon></td>
+        <td title="Completed" id="mark${counter}" ><box-icon name='check-circle'></box-icon></td>
         <td>
-            <button id="save-button" onClick="save(${counter})">Save</button>
-            <button id="cancel-button" onClick="cancelEdit2('${counter}','${title}','${description}','${dueDate}','${priority}')">Cancel</button>
+            <button title="Save Edit" id="save-button" onClick="save(${counter})">Save</button>
+            <button title="Cancel Edit" id="cancel-button" onClick="cancelEdit2('${counter}','${title}','${description}','${dueDate}','${priority}')">Cancel</button>
         </td>
         </form>
     `;
@@ -357,9 +357,9 @@ function cancelEdit(counter,title,description,dueDate,priority){
         <td id="status${counter}" class="statusColumn">0</td>
         <td id="mark${counter}" ><box-icon name='x-circle'></box-icon></td>
         <td>
-            <button onclick="edit(${counter})"><box-icon name='edit' ></box-icon></button>
-            <button onclick="del(${counter})"><box-icon name='trash' ></box-icon></button> 
-            <button onclick="complete('${counter}','${title}','${description}','${dueDate}','${priority}')"><box-icon name='check-circle'></box-icon></button>
+            <button title="Edit" onclick="edit(${counter})"><box-icon name='edit' ></box-icon></button>
+            <button title="Delete" onclick="del(${counter})"><box-icon name='trash' ></box-icon></button> 
+            <button title="Mark as Complete" onclick="complete('${counter}','${title}','${description}','${dueDate}','${priority}')"><box-icon name='check-circle'></box-icon></button>
         </td>
     </tr>
     `;
@@ -375,9 +375,9 @@ function cancelEdit2(counter,title,description,dueDate,priority){
         <td id="due-date${counter}">${dueDate}</td>
         <td id="priority${counter}">${priority}</td>
         <td id="status${counter}" class="statusColumn">1</td>
-        <td id="mark${counter}" ><box-icon name='check-circle'></box-icon></td>
+        <td title="Completed" id="mark${counter}" ><box-icon name='check-circle'></box-icon></td>
         <td>
-            <button onclick="edit2(${counter})"><box-icon name='edit' ></box-icon></button>
+            <button title="Edit" onclick="edit2(${counter})"><box-icon name='edit' ></box-icon></button>
         </td>
     </tr>
     `;
@@ -399,11 +399,11 @@ function save(counter){
         <td id="due-date${counter}">${dueDate}</td>
         <td id="priority${counter}">${priority}</td>
         <td id="status${counter}" class="statusColumn">0</td>
-        <td id="mark${counter}" ><box-icon name='x-circle'></box-icon></td>
+        <td title="Not Completed" id="mark${counter}" ><box-icon name='x-circle'></box-icon></td>
         <td>
-            <button onclick="edit(${counter})"><box-icon name='edit' ></box-icon></button>
-            <button onclick="del(${counter})"><box-icon name='trash' ></box-icon></button> 
-            <button onclick="complete('${counter}','${title}','${description}','${dueDate}','${priority}')"><box-icon name='check-circle'></box-icon></button>
+            <button title="Edit" onclick="edit(${counter})"><box-icon name='edit' ></box-icon></button>
+            <button title="Delete" onclick="del(${counter})"><box-icon name='trash' ></box-icon></button> 
+            <button title="Mark as Complete" onclick="complete('${counter}','${title}','${description}','${dueDate}','${priority}')"><box-icon name='check-circle'></box-icon></button>
         </td>
     </tr>
     `;
@@ -437,9 +437,9 @@ function complete(counter,title,description,dueDate,priority){
         <td id="due-date${counter}">${dueDate}</td>
         <td id="priority${counter}">${priority}</td>
         <td id="status${counter}" class="statusColumn">1</td>
-        <td id="mark${counter}" ><box-icon name='check-circle'></box-icon></td>
+        <td title="Completed" id="mark${counter}" ><box-icon name='check-circle'></box-icon></td>
         <td>
-            <button onclick="edit2(${counter})"><box-icon name='edit' ></box-icon></button>
+            <button title="Edit" onclick="edit2(${counter})"><box-icon name='edit' ></box-icon></button>
         </td>
     </tr>
     `;
