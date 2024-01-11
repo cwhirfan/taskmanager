@@ -36,6 +36,7 @@
             addTaskForm.reset();
 
             document.getElementById('counter').value++;
+            document.getElementById("due-date").valueAsDate = new Date();
 
             alert("Task added successfully");
             
@@ -361,7 +362,7 @@ function save(counter){
 function del(counter){
     let text = "Are you sure want to delete this task?";
     if (confirm(text) == true) {
-        document.getElementById("row"+counter).innerHTML =``
+        document.getElementById("row"+counter).remove();
         alert("The task has been successfully deleted!");
     } else {
         
@@ -383,6 +384,7 @@ function complete(counter,title,description,dueDate,priority){
         <td title="Completed" id="mark${counter}" ><box-icon name='check-circle'></box-icon></td>
         <td>
             <button title="Edit" onclick="edit2(${counter})"><box-icon name='edit' ></box-icon></button>
+            <button title="Delete" onclick="del(${counter})"><box-icon name='trash' ></box-icon></button> 
         </td>
     </tr>
     `;
@@ -393,7 +395,7 @@ function complete(counter,title,description,dueDate,priority){
     }
 }
 
-    //This function is to display the filter options
+//This function is to display the filter options
 function showFilter(){
 
     const display = document.getElementById("filter-container").style.display;
@@ -418,6 +420,25 @@ function selectAllCheckboxes() {
 }
 
 function filterTasks() {
+
+    // Check if any checkboxes are checked in priority section
+    const arePriorityFiltersChecked = Array.from(document.querySelectorAll('#priority-check input[type="checkbox"]')).some(filter => filter.checked);
+
+    // Check if any checkboxes are checked in status section
+    const areStatusFiltersChecked = Array.from(document.querySelectorAll('#status-check input[type="checkbox"]')).some(filter => filter.checked);
+
+    // If no checkboxes are checked in priority section, check all
+    if (!arePriorityFiltersChecked) {
+        document.getElementById("low").checked = true;
+        document.getElementById("medium").checked = true;
+        document.getElementById("high").checked = true;
+    }
+
+    // If no checkboxes are checked in status section, check all
+    if (!areStatusFiltersChecked) {
+        document.getElementById("completed").checked = true;
+        document.getElementById("notcompleted").checked = true;
+    }
 
     // Get selected filter values
     const priorityFilters = document.querySelectorAll('#priority-check input[type="checkbox"]:checked');
