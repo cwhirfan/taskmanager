@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <title>My Task Manager</title>
+    <title>My Task Manager</title> 
     <script src="script.js"></script>
 </head>
+
 <body onload="onloadproc()">
     
+    <!-- Header section -->
     <header id="myHeader">
         <div id="titleheader"><h1 id="app-title" contenteditable="true">My Task Manager</h1></div>
         <button id="btn-about" title="About Us Page" onClick="go_about()">About Us</button>
-        <!-- <button onclick="test()">test</button> -->
         <button id="personalize" title="Select Theme" onClick="personalizeButton()"><box-icon name='edit-alt'></box-icon></button>
     </header>
+    
+    <!-- Select Theme Div -->
     <div id="color-list">
         <div onclick="black()" class="colorBlock" id="Black"></div>
         <div onclick="blue()" class="colorBlock" id="Blue"></div>
@@ -109,6 +114,7 @@
                         <tr id="notask">
                             <td colspan="6" >No task yet</td>
                         </tr>
+                        <!-- All the task will be display here -->
                     </table>
                 </div>
             </div>
@@ -117,6 +123,8 @@
     <footer id="myFooter">
         <p>&copy; 2024 Enigma. All right reserved. | My Task Manager</p>
     </footer>
+
 </body>
+
 </html>
 
