@@ -1,21 +1,26 @@
  document.addEventListener('DOMContentLoaded', function () {
-    const addTaskForm = document.getElementById('add-task-form');
-    const taskList = document.getElementById('tasks');
-    document.getElementById("due-date").valueAsDate = new Date();
+    const addTaskForm = document.getElementById('add-task-form'); // Define the task form
+    const taskList = document.getElementById('tasks'); // Defince the task list
+    document.getElementById("due-date").valueAsDate = new Date(); // Set default date as today on the #due-date input
 
     addTaskForm.addEventListener('submit', function (event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default form submission behavior
 
-        document.getElementById('notask').style.display = "none";
+        document.getElementById('notask').style.display = "none"; // Hide the element with id 'notask' to clear any previous "no tasks" message
+
+        // Retrieve values from the form fields
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
         const dueDate = document.getElementById('due-date').value;
         const priority = document.getElementById('priority').value;
         const counter = document.getElementById('counter').value;
 
+         // Check if all required fields have been filled
         if (title && description && dueDate && priority) {
-            const newTask = document.createElement('tr');
-            newTask.setAttribute('id','row' + counter);
+            const newTask = document.createElement('tr'); // Create a new table row element
+            newTask.setAttribute('id','row' + counter); // Set the 'id' attribute for the new task row
+
+            // Populate the new task row with HTML content using template literals
             newTask.innerHTML = `
                 <td id="title${counter}">${title}</td>
                 <td id="description${counter}">${description}</td>
@@ -30,18 +35,18 @@
                 </td>
             `;
 
-            taskList.appendChild(newTask);
+            taskList.appendChild(newTask);  // Append the new task row to the task list
 
-            // Clear the form fields after adding a task
-            addTaskForm.reset();
+            addTaskForm.reset(); // Clear the form fields after adding a task
 
+            // Increment the counter value and reset the due date to the current date
             document.getElementById('counter').value++;
             document.getElementById("due-date").valueAsDate = new Date();
 
-            alert("Task added successfully");
+            alert("Task added successfully"); // Display a success message using an alert
             
         } else {
-            alert('Please fill in all the required fields.');
+            alert('Please fill in all the required fields.'); // If not all required fields are filled, display an alert message
         }
 
     });
@@ -50,12 +55,14 @@
 //This function is to display the the color choices
 function personalizeButton(){
 
-    const display = document.getElementById("color-list").style.display;
+    const display = document.getElementById("color-list").style.display; // Retrieve the current display style of the element with id 'color-list'
 
+    // Check if the 'color-list' element is currently displayed (block)
     if(display == "block"){
-        document.getElementById("color-list").style.display = "none";
+        document.getElementById("color-list").style.display = "none"; // If displayed, hide the 'color-list'
     }
     else{
+        // If not displayed, show the 'color-list' and hide the 'filter-container'
         document.getElementById("color-list").style.display = "block";
         document.getElementById("filter-container").style.display = "none";
     }
@@ -64,11 +71,13 @@ function personalizeButton(){
 
 // This function is to change the them color to black
 function black(){
+    // Set background and text colors of the header and footer elements
     document.getElementById("myHeader").style.backgroundColor = "#000";
     document.getElementById("myFooter").style.backgroundColor = "#000";
     document.getElementById("myHeader").style.color = "white";
     document.getElementById("myFooter").style.color = "white";
 
+    // Define CSS styles for buttons and apply them dynamically
     var css = '#btn-about:hover, #btn-about:active, #btn-mt:hover, #btn-mt:active {background-color: rgb(122, 122, 122);color: white;} #btn-about,#btn-mt {background-color: white;color: #000;}';
     var style = document.createElement('style');
 
@@ -78,18 +87,22 @@ function black(){
         style.appendChild(document.createTextNode(css));
     }
 
+    // Append the dynamically created style element to the header
     document.getElementsByTagName('header')[0].appendChild(style);
 
+    // Change the browser history state to indicate the black theme
     history.pushState({}, null, "?theme=black");
 }
 
 // This function is to change the them color to blue
 function blue(){
+    // Set background and text colors of the header and footer elements
     document.getElementById("myHeader").style.backgroundColor = "rgb(0, 153, 255)";
     document.getElementById("myFooter").style.backgroundColor = "rgb(0, 153, 255)";
     document.getElementById("myHeader").style.color = "white";
     document.getElementById("myFooter").style.color = "white";
 
+    // Define CSS styles for buttons and apply them dynamically
     var css = '#btn-about:hover, #btn-about:active, #btn-mt:hover, #btn-mt:active {background-color: rgb(0, 153, 255);color: white;} #btn-about,#btn-mt {background-color: white;color: rgb(0, 153, 255);}';
     var style = document.createElement('style');
 
@@ -99,18 +112,22 @@ function blue(){
         style.appendChild(document.createTextNode(css));
     }
 
+    // Append the dynamically created style element to the header
     document.getElementsByTagName('header')[0].appendChild(style);
 
+    // Change the browser history state to indicate the blue theme
     history.pushState({}, null, "?theme=blue");
 }
 
 // This function is to change the them color to red
 function red(){
+    // Set background and text colors of the header and footer elements
     document.getElementById("myHeader").style.backgroundColor = "#f00";
     document.getElementById("myFooter").style.backgroundColor = "#f00";
     document.getElementById("myHeader").style.color = "white";
     document.getElementById("myFooter").style.color = "white";
 
+    // Define CSS styles for buttons and apply them dynamically
     var css = '#btn-about:hover, #btn-about:active, #btn-mt:hover, #btn-mt:active {background-color: rgb(250, 115, 115);color: white;} #btn-about,#btn-mt {background-color: white;color: #f00;}';
     var style = document.createElement('style');
 
@@ -120,18 +137,22 @@ function red(){
         style.appendChild(document.createTextNode(css));
     }
 
+    // Append the dynamically created style element to the header
     document.getElementsByTagName('header')[0].appendChild(style);
 
+    // Change the browser history state to indicate the red theme
     history.pushState({}, null, "?theme=red");
 }
 
 // This function is to change the them color to pink
 function pink(){
+    // Set background and text colors of the header and footer elements
     document.getElementById("myHeader").style.backgroundColor = "#f59ace";
     document.getElementById("myFooter").style.backgroundColor = "#f59ace";
     document.getElementById("myHeader").style.color = "#000";
     document.getElementById("myFooter").style.color = "#000";
 
+    // Define CSS styles for buttons and apply them dynamically
     var css = '#btn-about:hover, #btn-about:active, #btn-mt:hover, #btn-mt:active {background-color: #f59ace;color: white;} #btn-about,#btn-mt {background-color: #000; color: #f59ace;}';
     var style = document.createElement('style');
 
@@ -141,74 +162,79 @@ function pink(){
         style.appendChild(document.createTextNode(css));
     }
 
+    // Append the dynamically created style element to the header
     document.getElementsByTagName('header')[0].appendChild(style);
 
+    // Change the browser history state to indicate the red theme
     history.pushState({}, null, "?theme=pink");
 }
 
 // This function is to load prefered theme color
 function onloadproc(){
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const theme = urlParams.get('theme');
+    const queryString = window.location.search; // Get the query string from the current URL
+    const urlParams = new URLSearchParams(queryString); // Create a new URLSearchParams object to parse the query string
+    const theme = urlParams.get('theme'); // Retrieve the value of the 'theme' parameter from the query string
     
+    // Check the theme value and call the corresponding function
     if(theme == "blue"){
-        blue();
+        blue(); // If the theme is 'blue', call the 'blue()' function
     }
     else if(theme == "black"){
-        black()
+        black(); // If the theme is 'black', call the 'blue()' function
     }
     else if(theme == "red"){
-        red()
+        red(); // If the theme is 'red', call the 'blue()' function
     }
     else if(theme == "pink"){
-        pink()
+        pink(); // If the theme is 'pink', call the 'blue()' function
     }
 }
 
 //This function is to go to the About Us page.
 function go_about(){
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const theme = urlParams.get('theme');
+    const queryString = window.location.search; // Get the query string from the current URL
+    const urlParams = new URLSearchParams(queryString); // Create a new URLSearchParams object to parse the query string
+    const theme = urlParams.get('theme'); // Retrieve the value of the 'theme' parameter from the query string
     
+    // Check the theme value and construct the new URL accordingly
     if(theme == "blue"){
-        window.location.href = "about.html?theme=blue";
+        window.location.href = "about.html?theme=blue"; // If the theme is 'blue', navigate to "about.html?theme=blue"
     }
     else if(theme == "black"){
-        window.location.href = "about.html?theme=black";
+        window.location.href = "about.html?theme=black"; // If the theme is 'black', navigate to "about.html?theme=blue"
     }
     else if(theme == "red"){
-        window.location.href = "about.html?theme=red";
+        window.location.href = "about.html?theme=red"; // If the theme is 'red', navigate to "about.html?theme=blue"
     }
     else if(theme == "pink"){
-        window.location.href = "about.html?theme=pink";
+        window.location.href = "about.html?theme=pink"; // If the theme is 'pink', navigate to "about.html?theme=blue"
     }
     else{
-        window.location.href = "about.html";
+        window.location.href = "about.html"; // If no specific theme is present, navigate to the default "about.html"
     }
 }
 
 // This function is to go back to My task page
 function go_mt(){
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const theme = urlParams.get('theme');
+    const queryString = window.location.search; // Get the query string from the current URL
+    const urlParams = new URLSearchParams(queryString); // Create a new URLSearchParams object to parse the query string
+    const theme = urlParams.get('theme'); // Retrieve the value of the 'theme' parameter from the query string
     
+    // Check the theme value and construct the new URL accordingly
     if(theme == "blue"){
-        window.location.href = "index.html?theme=blue";
+        window.location.href = "index.html?theme=blue"; // If the theme is 'blue', navigate to "index.html?theme=blue"
     }
     else if(theme == "black"){
-        window.location.href = "index.html?theme=black";
+        window.location.href = "index.html?theme=black"; // If the theme is 'black', navigate to "index.html?theme=blue"
     }
     else if(theme == "red"){
-        window.location.href = "index.html?theme=red";
+        window.location.href = "index.html?theme=red"; // If the theme is 'red', navigate to "index.html?theme=blue"
     }
     else if(theme == "pink"){
-        window.location.href = "index.html?theme=pink";
+        window.location.href = "index.html?theme=pink"; // If the theme is 'pink', navigate to "index.html?theme=blue"
     }
     else{
-        window.location.href = "index.html";
+        window.location.href = "index.html"; // If no specific theme is present, navigate to the default "index.html"
     }
 }
 
